@@ -1,0 +1,19 @@
+name: Deploy - Production
+
+on:
+  push:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Dokku
+        uses: dokku/github-action@v1.0.1
+        with:
+          branch: main
